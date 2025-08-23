@@ -1,0 +1,60 @@
+[mgr]
+prepend_keymap = [
+  # 进入终端
+  { on = "!", run = 'shell "fish" --block' },
+  # 压缩文档
+  { on = [ "c", "a" ], run = "plugin compress" },
+  # 文档目录
+  { on = [ "g", "d", "d" ], run = "cd /home/lh/Downloads" },
+  { on = [ "g", "d", "p", "p" ], run = "cd /home/lh/Pictures" },
+  { on = [ "g", "d", "p", "g" ], run = "cd /home/lh/Pictures/Gallery" },
+  { on = [ "g", "d", "p", "w" ], run = "cd /home/lh/Pictures/Wallpapers" },
+  { on = [ "g", "d", "p", "s" ], run = "cd /home/lh/Pictures/Screenshots" },
+  { on = [ "g", "d", "v", "v" ], run = "cd /home/lh/Videos" },
+  { on = [ "g", "d", "v", "r" ], run = "cd /home/lh/Videos/Recordings" },
+  { on = [ "g", "d", "m" ], run = "cd /home/lh/Music" },
+  { on = [ "g", "d", "o" ], run = "cd /home/lh/Public/share/obsidian" },
+  # config目录
+  { on = [ "g", "c", "c" ], run = "cd /home/lh/.config" },
+  { on = [ "g", "c", "y" ], run = "cd /home/lh/.config/yazi" },
+  { on = [ "g", "c", "g" ], run = "cd /home/lh/.config/go-musicfox" },
+  { on = [ "g", "c", "k" ], run = "cd /home/lh/.config/kitty" },
+  { on = [ "g", "c", "h" ], run = "cd /home/lh/.config/hypr" },
+  { on = [ "g", "c", "n" ], run = "cd /home/lh/.config/nvim" },
+  { on = [ "g", "c", "f" ], run = "cd /home/lh/.config/fish" },
+  # cache目录
+  { on = [ "g", "C", "C" ], run = "cd /home/lh/.cache" },
+  { on = [ "g", "C", "g" ], run = "cd /home/lh/.cache/go-musicfox" },
+  # local目录
+  { on = [ "g", "l", "s" ], run = "cd /home/lh/.local/share" },
+  { on = [ "g", "l", "t" ], run = "cd /home/lh/.local/state" },
+  # share目录
+  { on = [ "g", "s", "u" ], run = "cd /home/lh/.local/share" },
+  { on = [ "g", "s", "r" ], run = "cd /usr/share" },
+  { on = [ "g", "s", "w" ], run = "cd /home/lh/.local/share/WeChat_Data" },
+  # 程序目录
+  ## WallpaperEngineData for steam
+  { on = [ "g", "a", "s", "w" ], run = "cd /home/lh/.steam/steam/steamapps/workshop/content/431960" },
+
+  # simple-mtp
+  # simple-mtpfs plugin
+  # { on = [ "M", "m" ], run = "plugin simple-mtpfs -- select-then-mount", desc = "Select device then mount" },
+  # or this if you want to jump to mountpoint after mounted
+  { on = [ "M", "m" ], run = "plugin simple-mtpfs -- select-then-mount --jump", desc = "Select device to mount and jump to its mount point" },
+  # This will remount device under cwd (e.g. cwd = $HOME/Media/1_ZTEV5/Downloads/, device mountpoint = $HOME/Media/1_ZTEV5/)
+  { on = [ "M", "r" ], run = "plugin simple-mtpfs -- remount-current-cwd-device", desc = "Remount device under cwd" },
+  { on = [ "M", "u" ], run = "plugin simple-mtpfs -- select-then-unmount", desc = "Select device then unmount" },
+  { on = [ "g", "m" ], run = "plugin simple-mtpfs -- jump-to-device", desc = "Select device then jump to its mount point" },
+  { on = [ "`", "`" ], run = "plugin simple-mtpfs -- jump-back-prev-cwd", desc = "Jump back to the position before jumped to device" },
+  # relative-motions
+  { on = "e", run = "plugin relative-motions", desc = "Trigger a new relative motion"},
+  # 预览目录下所有图片
+  { on = "P", run = 'ls', block = true, desc = "预览所有图片"}
+  # { on = "P", run = 'shell fish find . f \( -name "*.jpg" -o -name "*.png" \) -print0 | xargs -0 swayimg', desc = "预览所有图片"}
+]
+
+[input]
+prepend_keymap = [
+  # 退出shell模式
+  { on = "<Esc>", run = "close", desc = "Cancel input" },
+]

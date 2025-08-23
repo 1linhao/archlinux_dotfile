@@ -1,0 +1,6 @@
+-- vim中文帮助文档
+return {
+  "yianwillis/vimcdoc",
+  event = "VeryLazy",
+  opts = {},
+}

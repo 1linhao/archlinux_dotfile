@@ -1,0 +1,9 @@
+fish/*
+!fish/config.fish
+mpd/*
+!mpd/mpd.conf
+ncmpcpp/*
+!ncmpcpp/bindings
+!ncmpcpp/config
+fcitx5/*
+!fcitx5/config

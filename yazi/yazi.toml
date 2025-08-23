@@ -1,0 +1,24 @@
+[opener]
+play = [
+  { run = 'mpv "$@"' , orphan = true, for = "linux" }
+]
+edit = [
+	{ run = 'nvim "$@"', block = true, for = "linux" },
+]
+image = [
+	{ run = 'swayimg "$@"', orphan = true, for = "linux" },
+]
+odg = [
+  { run = 'libreoffic --draw "$@", block = true, for = "linux"'},
+]
+
+open = [ ]
+
+[open]
+prepend_rules = [
+	{ mine = "text/*", use = "edit" },
+  { mime = "video/*", use = "play" },
+  { mime = "audio/*", use = "play" },
+  { mime = "image/*", use = "image" },
+  { mime = "application/oasis.opendocument.graphics", use = "odg" },
+]

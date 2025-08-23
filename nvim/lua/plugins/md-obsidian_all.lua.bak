@@ -1,0 +1,107 @@
+-- obsidian.nvim 配置 (适配 lazy.nvim)
+return {
+  "epwalsh/obsidian.nvim",
+  lazy = true,
+  event = { "BufReadPre " .. vim.fn.expand("~") .. "/vaults/**.md" }, -- 按需加载
+  dependencies = { "nvim-lua/plenary.nvim" },
+  opts = {
+    -- 工作区配置
+    workspaces = {
+      {
+        name = "personal",  -- 工作区名称
+        path = "~/vaults/personal",  -- Obsidian 库根目录（含 .obsidian 文件夹）
+      },
+      {
+        name = "work",
+        path = "~/vaults/work",
+        overrides = {
+          notes_subdir = "notes",  -- 覆盖默认笔记子目录
+        },
+      },
+    },
+
+    -- 默认笔记子目录（可被工作区覆盖）
+    notes_subdir = "notes",
+
+    -- 日志级别（vim.log.levels.*）
+    log_level = vim.log.levels.INFO,
+
+    -- 每日笔记配置
+    daily_notes = {
+      folder = "notes/dailies",     -- 日记存放目录
+      date_format = "%Y-%m-%d",     -- 文件名日期格式
+      alias_format = "%B %-d, %Y",  -- 日记别名格式
+      default_tags = { "daily-notes" },  -- 默认标签
+      template = nil  -- 可选模板（例如 "daily.md"）
+    },
+
+    -- 自动补全（基于 nvim-cmp）
+    completion = {
+      nvim_cmp = true,  -- 启用补全
+      min_chars = 2,    -- 触发补全的最小字符数
+    },
+
+    -- 自定义键位映射
+    mappings = {
+      ["gf"] = {  -- 改进的 gf 跳转（支持 Markdown/Wiki 链接）
+        action = function() return require("obsidian").util.gf_passthrough() end,
+        opts = { noremap = false, expr = true, buffer = true },
+      },
+      ["<leader>ch"] = {  -- 切换复选框状态
+        action = function() return require("obsidian").util.toggle_checkbox() end,
+        opts = { buffer = true },
+      },
+      ["<cr>"] = {  -- 智能操作（根据上下文跳转链接或切换复选框）
+        action = function() return require("obsidian").util.smart_action() end,
+        opts = { buffer = true, expr = true },
+      },
+    },
+
+    -- 新笔记存放位置（"current_dir" 或 "notes_subdir"）
+    new_notes_location = "notes_subdir",
+
+    -- 自定义笔记 ID 生成规则
+    note_id_func = function(title)
+      local suffix = title and title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+                    or string.char(math.random(65, 90)):rep(4)
+      return os.time() .. "-" .. suffix  -- 例如：1657296016-my-note
+    end,
+
+    -- 自定义笔记文件名
+    note_path_func = function(spec)
+      return spec.dir / spec.id .. ".md"  -- 默认格式：ID.md
+    end,
+
+    -- Wiki 链接格式（可选："use_alias_only", "prepend_note_id", 等）
+    wiki_link_func = "use_alias_only",
+    preferred_link_style = "wiki",  -- 默认链接风格（wiki/markdown）
+
+    -- 图片粘贴配置
+    image_name_func = function() return os.time() .. "-" end,  -- 图片名前缀（时间戳）
+    attachments = {
+      img_folder = "assets/imgs",  -- 图片默认存放目录
+    },
+
+    -- 高级功能
+    disable_frontmatter = false,  -- 是否禁用自动管理 Frontmatter
+    use_advanced_uri = false,     -- 是否使用 Obsidian Advanced URI 插件
+    open_app_foreground = false,  -- 打开 Obsidian 时是否强制前台
+
+    -- 界面增强
+    ui = {
+      enable = true,  -- 启用 UI 增强（如复选框高亮）
+      checkboxes = {  -- 自定义复选框图标
+        [" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
+        ["x"] = { char = "", hl_group = "ObsidianDone" },
+      },
+    },
+
+    -- 其他配置
+    picker = { name = "telescope.nvim" },  -- 选择器插件（默认 Telescope）
+    sort_by = "modified", sort_reversed = true,  -- 按修改时间倒序排序
+  },
+  config = function(_, opts)
+    require("obsidian").setup(opts)
+    -- 可选：为 Markdown 文件设置自动命令或额外键位
+  end,
+}

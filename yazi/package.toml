@@ -1,0 +1,17 @@
+[[plugin.deps]]
+use = "boydaihungst/simple-mtpfs"
+rev = "1e504be"
+hash = "f38c83bf58790013fcf6ffb8d4009421"
+
+[[plugin.deps]]
+use = "dedukun/relative-motions"
+rev = "ce2e890"
+hash = "23915860e59348bf4166778bb0e606f7"
+
+[[plugin.deps]]
+use = "KKV9/compress"
+rev = "c264639"
+hash = "e17c11b605d989568a1d1741ca17c584"
+
+[flavor]
+deps = []

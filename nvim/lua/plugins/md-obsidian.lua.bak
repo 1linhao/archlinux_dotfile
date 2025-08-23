@@ -1,0 +1,138 @@
+-- 前置条件：ripgrep
+return {
+  "epwalsh/obsidian.nvim",
+  version = "*",  -- 使用最新 release 版本，确保稳定性
+  lazy = true,    -- 延迟加载插件
+  ft = "markdown",-- 只在 markdown 文件中加载插件
+  dependencies = {
+    "nvim-lua/plenary.nvim",  -- 必需依赖
+    "saghen/blink.cmp",
+    "saghen/blink.compat",
+    "nvim-telescope/telescope.nvim", -- 用于搜索和快速切换
+    -- 可选依赖（推荐安装以获得完整功能）：
+    -- "hrsh7th/nvim-cmp",           -- 用于自动补全
+    -- "nvim-treesitter/nvim-treesitter", -- 用于语法高亮
+  },
+  opts = {
+    workspaces = {
+      -- 使用`:ObsidianWorkspace personal`切换到该工作区
+      {
+        name = "personal",           -- 工作区名称
+        path = "~/Public/share/obsidian"  -- 工作区路径（你的 Obsidian 笔记库位置）
+      },
+      {
+        name = "no-vault",  -- 动态工作区
+        path = function()
+          return assert(vim.fs.dirname(vim.api.nvim_buf_get_name(0)))  -- 当前文件的父目录
+        end,
+        overrides = {
+          notes_subdir = vim.NIL,  -- 不使用子目录
+          new_notes_location = "current_dir",  -- 新笔记保存在当前目录
+          templates = { folder = vim.NIL },  -- 禁用模板
+          disable_frontmatter = true,  -- 禁用 YAML 前置元数据
+        },
+      },
+    },
+    completion = {
+      nvim_cmp = false, -- 关闭 nvim-cmp 补全
+      min_chars = 2,
+      trigger = {
+        ["#"] = {
+          kind = "obsidian_tags",
+          -- 自定义补全逻辑，扫描 YAML 标签并移除 #
+          callback = function()
+            local workspace = require("obsidian").get_workspace()
+            local notes = vim.fn.globpath(workspace.path, "*.md", false, true)
+            local tags = {}
+            for _, note in ipairs(notes) do
+              local content = vim.fn.readfile(note)
+              local in_frontmatter = false
+              for _, line in ipairs(content) do
+                if line:match("^%-%-%-") then
+                  in_frontmatter = not in_frontmatter
+                elseif in_frontmatter and line:match("^%s*-%s*[^%s].*$") then
+                  local tag = line:match("^%s*-%s*(.*)$"):gsub("^#", "")
+                  if tag ~= "" then
+                    tags[tag] = true
+                  end
+                end
+              end
+            end
+            return vim.tbl_keys(tags)
+          end,
+        },  -- 支持 # 触发以兼容正文
+      },
+    },
+    
+    mappings = {
+      -- 搜索笔记内容
+      ["<Leader>os"] = {
+        action = function()
+          vim.cmd("ObsidianSearch")
+        end,
+        opts = { noremap = true, buffer = true, desc = "Search Obsidian notes" },
+      },
+      -- 快速切换笔记
+      ["<Leader>on"] = {
+        action = function()
+          vim.cmd("ObsidianQuickSwitch")
+        end,
+        opts = { noremap = true, buffer = true, desc = "Quick switch Obsidian notes" },
+      },
+      -- 搜索标签
+      ["<Leader>ot"] = {
+        action = function() vim.cmd("ObsidianTags") end,
+        opts = { noremap = true, buffer = true, desc = "Search Obsidian tags" },
+      },
+      -- 重命名笔记
+      ["<Leader>or"] = {
+        action = function() vim.cmd("ObsidianRename") end,
+        opts = {noremap = true, buffer = true, desc = "Rename Obsidian note" }
+      },
+      -- 打开 Obsidian 应用
+      ["<Leader>oo"] = {
+        action = function() vim.cmd("ObsidianOpen") end,
+        opts = { noremap = true, buffer = true, desc = "Open in Obsidian app" },
+      },
+    },
+    -- 配置打开外部应用
+    follow_url_func = function(url)
+      vim.fn.jobstart({"xdg-open", url})
+    end,
+    follow_img_func = function(img)
+      vim.fn.jobstart({"xdg-open", img})
+    end,
+    open_app_func = function(path)
+      vim.fn.jobstart({"xdg-open", "obsidian://open?path=" .. vim.fn.shellescape(path)})
+    end,
+    open_notes_in = "current",
+    search_max_lines = 1000,  -- 限制每文件扫描行数
+    -- 禁用 # 前缀
+    note_frontmatter_func = function(note)
+      local out = { id = note.id, aliases = note.aliases or {}, tags = note.tags or {} }
+      -- 确保 tags 使用多行 - 样式，无 #
+      if note.tags then
+        out.tags = vim.tbl_map(function(tag) return tag:gsub("^#", "") end, note.tags)
+      end
+      -- 自定义 YAML 格式化
+      local yaml_lines = { "---" }
+      table.insert(yaml_lines, "id: " .. (out.id or ""))
+      table.insert(yaml_lines, "aliases: []")
+      if #out.tags > 0 then
+        table.insert(yaml_lines, "tags:")
+        for _, tag in ipairs(out.tags) do
+          table.insert(yaml_lines, "  - " .. tag)
+        end
+      else
+        table.insert(yaml_lines, "tags: []")
+      end
+      table.insert(yaml_lines, "---")
+      return table.concat(yaml_lines, "\n")
+    end,
+
+    -- 其他配置选项稍后会详细讲解
+    ui = {
+      enable = false, -- 禁用附加 UI 功能
+    },
+  },
+}

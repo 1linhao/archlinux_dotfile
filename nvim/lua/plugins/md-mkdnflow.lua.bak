@@ -1,0 +1,41 @@
+-- markdown编辑体验优化
+return {
+  'jakewvincent/mkdnflow.nvim',
+  config = function()
+    require('mkdnflow').setup({
+      modules = {
+        bib = false, -- 禁用书目功能
+        buffers = false, -- 禁用缓冲区导航
+        conceal = false, -- 禁用链接隐藏
+        cursor = true, -- 启用光标跳转
+        folds = false, -- 禁用折叠功能
+        foldtext = false, -- 禁用折叠文本
+        links = true, -- 启用链接功能
+        lists = false, -- 禁用列表功能
+        maps = true, -- 启用插件内部映射
+        paths = true, -- 启用路径解析
+        tables = false, -- 禁用表格功能
+        yaml = false, -- 禁用yaml解析
+        cmp = false -- 禁用补全功能
+      },
+      -- 支持的文件类型
+      filetypes = {md = true, rmd = true, markdown = true},
+      -- 自动创建不存在的目录
+      create_dirs = false,
+      links = {
+        -- 支持wiki样式链接（[[link|name]]）
+        style = 'wiki',
+        -- 不隐藏链接源
+        conceal = false,
+        implicit_extension = "md",
+        -- 跟随失败时创建新链接
+        create_on_follow_failure = true,
+      },
+      -- 默认映射
+      mappings = {
+        -- 跳转或创建链接
+        MkdnEnter = {{'n', 'v'}, '<CR>'},
+      }
+    })
+  end
+}
