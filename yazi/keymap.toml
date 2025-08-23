@@ -2,9 +2,22 @@
 prepend_keymap = [
   # 进入终端
   { on = "!", run = 'shell "fish" --block' },
-  # 压缩文档
+
+  # 插件功能
+  ## compress: 压缩文档
   { on = [ "c", "a" ], run = "plugin compress" },
-  # 文档目录
+
+  ## simple-mtpfs: mtp挂载
+  { on = [ "M", "m" ], run = "plugin simple-mtpfs -- select-then-mount --jump", desc = "选择设备挂载并跳转" },
+  { on = [ "M", "r" ], run = "plugin simple-mtpfs -- remount-current-cwd-device", desc = "重新挂载当前工作目录的设备" },
+  { on = [ "M", "u" ], run = "plugin simple-mtpfs -- select-then-unmount", desc = "选择设备并卸载" },
+  { on = [ "g", "m" ], run = "plugin simple-mtpfs -- jump-to-device", desc = "选择设备并跳转到挂载点" },
+  { on = [ "`", "`" ], run = "plugin simple-mtpfs -- jump-back-prev-cwd", desc = "回到跳转到此设备挂载点前的位置" },
+  ## relative-motions: vim的相对motions
+  { on = "e", run = "plugin relative-motions", desc = "跳转到相对行"},
+
+  # 目录跳转
+  ## 文档目录
   { on = [ "g", "d", "d" ], run = "cd /home/lh/Downloads" },
   { on = [ "g", "d", "p", "p" ], run = "cd /home/lh/Pictures" },
   { on = [ "g", "d", "p", "g" ], run = "cd /home/lh/Pictures/Gallery" },
@@ -14,7 +27,10 @@ prepend_keymap = [
   { on = [ "g", "d", "v", "r" ], run = "cd /home/lh/Videos/Recordings" },
   { on = [ "g", "d", "m" ], run = "cd /home/lh/Music" },
   { on = [ "g", "d", "o" ], run = "cd /home/lh/Public/share/obsidian" },
-  # config目录
+  { on = [ "g", "d", "g", "g" ], run = "cd /home/lh/git" },
+  { on = [ "g", "d", "g", "d" ], run = "cd /home/lh/git/dotfile" },
+  { on = [ "g", "d", "g", "c" ], run = "cd /home/lh/git/caelestia" },
+  ## config目录
   { on = [ "g", "c", "c" ], run = "cd /home/lh/.config" },
   { on = [ "g", "c", "y" ], run = "cd /home/lh/.config/yazi" },
   { on = [ "g", "c", "g" ], run = "cd /home/lh/.config/go-musicfox" },
@@ -22,35 +38,18 @@ prepend_keymap = [
   { on = [ "g", "c", "h" ], run = "cd /home/lh/.config/hypr" },
   { on = [ "g", "c", "n" ], run = "cd /home/lh/.config/nvim" },
   { on = [ "g", "c", "f" ], run = "cd /home/lh/.config/fish" },
-  # cache目录
+  ## cache目录
   { on = [ "g", "C", "C" ], run = "cd /home/lh/.cache" },
   { on = [ "g", "C", "g" ], run = "cd /home/lh/.cache/go-musicfox" },
-  # local目录
+  ## local目录
   { on = [ "g", "l", "s" ], run = "cd /home/lh/.local/share" },
   { on = [ "g", "l", "t" ], run = "cd /home/lh/.local/state" },
-  # share目录
-  { on = [ "g", "s", "u" ], run = "cd /home/lh/.local/share" },
-  { on = [ "g", "s", "r" ], run = "cd /usr/share" },
-  { on = [ "g", "s", "w" ], run = "cd /home/lh/.local/share/WeChat_Data" },
-  # 程序目录
-  ## WallpaperEngineData for steam
-  { on = [ "g", "a", "s", "w" ], run = "cd /home/lh/.steam/steam/steamapps/workshop/content/431960" },
+  ## share目录
+  { on = [ "g", "s", "s" ], run = "cd /usr/share" },
+  ## 程序目录
+  { on = [ "g", "a", "s", "w" ], run = "cd /home/lh/.steam/steam/steamapps/workshop/content/431960", desc = "WallpaperEngineData for steam" },
+  { on = [ "g", "a", "w", "d" ], run = "cd /home/lh/.local/share/WeChat_Data", desc = "微信数据目录" },
 
-  # simple-mtp
-  # simple-mtpfs plugin
-  # { on = [ "M", "m" ], run = "plugin simple-mtpfs -- select-then-mount", desc = "Select device then mount" },
-  # or this if you want to jump to mountpoint after mounted
-  { on = [ "M", "m" ], run = "plugin simple-mtpfs -- select-then-mount --jump", desc = "Select device to mount and jump to its mount point" },
-  # This will remount device under cwd (e.g. cwd = $HOME/Media/1_ZTEV5/Downloads/, device mountpoint = $HOME/Media/1_ZTEV5/)
-  { on = [ "M", "r" ], run = "plugin simple-mtpfs -- remount-current-cwd-device", desc = "Remount device under cwd" },
-  { on = [ "M", "u" ], run = "plugin simple-mtpfs -- select-then-unmount", desc = "Select device then unmount" },
-  { on = [ "g", "m" ], run = "plugin simple-mtpfs -- jump-to-device", desc = "Select device then jump to its mount point" },
-  { on = [ "`", "`" ], run = "plugin simple-mtpfs -- jump-back-prev-cwd", desc = "Jump back to the position before jumped to device" },
-  # relative-motions
-  { on = "e", run = "plugin relative-motions", desc = "Trigger a new relative motion"},
-  # 预览目录下所有图片
-  { on = "P", run = 'ls', block = true, desc = "预览所有图片"}
-  # { on = "P", run = 'shell fish find . f \( -name "*.jpg" -o -name "*.png" \) -print0 | xargs -0 swayimg', desc = "预览所有图片"}
 ]
 
 [input]
