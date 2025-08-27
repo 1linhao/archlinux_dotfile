@@ -21,11 +21,13 @@ abbr gdpw cd /home/lh/Pictures/Wallpapers
 abbr gdps cd /home/lh/Pictures/Screenshots
 abbr gdvv cd /home/lh/Videos
 abbr gdvr cd /home/lh/Videos/Recordings
+abbr gdva cd /home/lh/Videos/Anime
 abbr gdm cd /home/lh/Music
 abbr gdo cd /home/lh/Public/share/obsidian
 abbr gdgg cd /home/lh/git
 abbr gdgd cd /home/lh/git/dotfile
 abbr gdgc cd /home/lh/git/caelestia
+abbr gdp cd /home/lh/Program
 ## config目录
 abbr gcc cd /home/lh/.config
 abbr gcy cd /home/lh/.config/yazi
@@ -38,7 +40,9 @@ abbr gcf cd /home/lh/.config/fish
 abbr gCC cd /home/lh/.cache
 abbr gCg cd /home/lh/.cache/go-musicfox
 ## local目录
-abbr gls cd /home/lh/.local/share
+abbr glss cd /home/lh/.local/share
+abbr glsa cd /home/lh/.local/share/applications
+abbr glsa cd /home/lh/.local/share/applications
 abbr glt cd /home/lh/.local/state
 ## share目录
 abbr gss cd /usr/share
@@ -47,6 +51,8 @@ abbr gss cd /usr/share
 abbr gasw cd /home/lh/.steam/steam/steamapps/workshop/content/431960
 ### 微信数据目录
 abbr gawd cd /home/lh/.local/share/WeChat_Data
+### wine用户目录
+abbr gdw cd /home/lh/.wine/drive_c/users
 
 # yazi 
 function y

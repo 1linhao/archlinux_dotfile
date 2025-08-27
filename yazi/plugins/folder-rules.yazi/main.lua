@@ -3,7 +3,7 @@ local function setup()
     local mtime = {
         "Downloads",
         "Screenshots",
-        "Recording",
+        "Recordings",
         "431960",
         -- 在此处添加更多目录名
     }

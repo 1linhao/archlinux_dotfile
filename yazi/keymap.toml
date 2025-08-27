@@ -11,7 +11,7 @@ prepend_keymap = [
   { on = [ "M", "m" ], run = "plugin simple-mtpfs -- select-then-mount --jump", desc = "选择设备挂载并跳转" },
   { on = [ "M", "r" ], run = "plugin simple-mtpfs -- remount-current-cwd-device", desc = "重新挂载当前工作目录的设备" },
   { on = [ "M", "u" ], run = "plugin simple-mtpfs -- select-then-unmount", desc = "选择设备并卸载" },
-  { on = [ "g", "m" ], run = "plugin simple-mtpfs -- jump-to-device", desc = "选择设备并跳转到挂载点" },
+  { on = [ "M", "g" ], run = "plugin simple-mtpfs -- jump-to-device", desc = "选择设备并跳转到挂载点" },
   { on = [ "`", "`" ], run = "plugin simple-mtpfs -- jump-back-prev-cwd", desc = "回到跳转到此设备挂载点前的位置" },
   ## relative-motions: vim的相对motions
   { on = "e", run = "plugin relative-motions", desc = "跳转到相对行"},
@@ -25,11 +25,13 @@ prepend_keymap = [
   { on = [ "g", "d", "p", "s" ], run = "cd /home/lh/Pictures/Screenshots" },
   { on = [ "g", "d", "v", "v" ], run = "cd /home/lh/Videos" },
   { on = [ "g", "d", "v", "r" ], run = "cd /home/lh/Videos/Recordings" },
+  { on = [ "g", "d", "v", "a" ], run = "cd /home/lh/Videos/Anime" },
   { on = [ "g", "d", "m" ], run = "cd /home/lh/Music" },
   { on = [ "g", "d", "o" ], run = "cd /home/lh/Public/share/obsidian" },
   { on = [ "g", "d", "g", "g" ], run = "cd /home/lh/git" },
   { on = [ "g", "d", "g", "d" ], run = "cd /home/lh/git/dotfile" },
   { on = [ "g", "d", "g", "c" ], run = "cd /home/lh/git/caelestia" },
+  { on = [ "g", "d", "p" ], run = "cd /home/lh/Program" },
   ## config目录
   { on = [ "g", "c", "c" ], run = "cd /home/lh/.config" },
   { on = [ "g", "c", "y" ], run = "cd /home/lh/.config/yazi" },
@@ -42,13 +44,15 @@ prepend_keymap = [
   { on = [ "g", "C", "C" ], run = "cd /home/lh/.cache" },
   { on = [ "g", "C", "g" ], run = "cd /home/lh/.cache/go-musicfox" },
   ## local目录
-  { on = [ "g", "l", "s" ], run = "cd /home/lh/.local/share" },
+  { on = [ "g", "l", "s", "s" ], run = "cd /home/lh/.local/share" },
+  { on = [ "g", "l", "s", "a" ], run = "cd /home/lh/.local/share/applications" },
   { on = [ "g", "l", "t" ], run = "cd /home/lh/.local/state" },
   ## share目录
   { on = [ "g", "s", "s" ], run = "cd /usr/share" },
   ## 程序目录
   { on = [ "g", "a", "s", "w" ], run = "cd /home/lh/.steam/steam/steamapps/workshop/content/431960", desc = "WallpaperEngineData for steam" },
   { on = [ "g", "a", "w", "d" ], run = "cd /home/lh/.local/share/WeChat_Data", desc = "微信数据目录" },
+  { on = [ "g", "d", "w" ], run = "cd /home/lh/.wine/drive_c/users", desc = "wine用户目录" },
 
 ]
 
