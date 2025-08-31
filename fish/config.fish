@@ -28,10 +28,12 @@ abbr gdgg cd /home/lh/git
 abbr gdgd cd /home/lh/git/dotfile
 abbr gdgc cd /home/lh/git/caelestia
 abbr gdp cd /home/lh/Program
+abbr gds cd /home/lh/Script
 ## config目录
 abbr gcc cd /home/lh/.config
 abbr gcy cd /home/lh/.config/yazi
 abbr gcg cd /home/lh/.config/go-musicfox
+abbr gcr cd /home/lh/.config/rmpc
 abbr gck cd /home/lh/.config/kitty
 abbr gch cd /home/lh/.config/hypr
 abbr gcn cd /home/lh/.config/nvim

@@ -23,11 +23,11 @@ case "$1" in
     fi
     ;;
   resume)
-    sleep 3
+    sleep 1
     case "$(cat "$variable_path")" in
       1)
         bash "$monitor_script_path" mho
-        sleep 5
+        sleep 1
         bash "$monitor_script_path" mec
         ;;
       2)

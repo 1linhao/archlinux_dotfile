@@ -32,10 +32,12 @@ prepend_keymap = [
   { on = [ "g", "d", "g", "d" ], run = "cd /home/lh/git/dotfile" },
   { on = [ "g", "d", "g", "c" ], run = "cd /home/lh/git/caelestia" },
   { on = [ "g", "d", "p" ], run = "cd /home/lh/Program" },
+  { on = [ "g", "d", "s" ], run = "cd /home/lh/Script" },
   ## config目录
   { on = [ "g", "c", "c" ], run = "cd /home/lh/.config" },
   { on = [ "g", "c", "y" ], run = "cd /home/lh/.config/yazi" },
   { on = [ "g", "c", "g" ], run = "cd /home/lh/.config/go-musicfox" },
+  { on = [ "g", "c", "r" ], run = "cd /home/lh/.config/rmpc" },
   { on = [ "g", "c", "k" ], run = "cd /home/lh/.config/kitty" },
   { on = [ "g", "c", "h" ], run = "cd /home/lh/.config/hypr" },
   { on = [ "g", "c", "n" ], run = "cd /home/lh/.config/nvim" },
