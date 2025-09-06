@@ -57,7 +57,7 @@ init_snapshot_json() {
             echo "Repairing invalid snapshot.json..."
             echo '{"snapshots": []}' | tee "$SNAPSHOT_JSON" > /dev/null
         fi
-    }
+    fi
 }
 
 # ==== 创建快照 ====
