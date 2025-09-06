@@ -27,7 +27,7 @@ abbr gdo cd /home/lh/Public/share/obsidian
 abbr gdgg cd /home/lh/git
 abbr gdgd cd /home/lh/git/dotfile
 abbr gdgc cd /home/lh/git/caelestia
-abbr gdp cd /home/lh/Program
+abbr gdP cd /home/lh/Program
 abbr gds cd /home/lh/Script
 ## config目录
 abbr gcc cd /home/lh/.config
@@ -52,9 +52,9 @@ abbr gss cd /usr/share
 ### WallpaperEngineData for steam
 abbr gasw cd /home/lh/.steam/steam/steamapps/workshop/content/431960
 ### 微信数据目录
-abbr gawd cd /home/lh/.local/share/WeChat_Data
+abbr gawd cd /home/lh/Documents/xwechat_files/wxid_wq6oqrz4aywl22_7cad/msg/file
 ### wine用户目录
-abbr gdw cd /home/lh/.wine/drive_c/users
+abbr gaww cd /home/lh/.wine/drive_c/users
 
 # yazi 
 function y

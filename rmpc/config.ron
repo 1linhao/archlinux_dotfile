@@ -14,7 +14,7 @@
     wrap_navigation: false,
     enable_mouse: true,
     enable_config_hot_reload: true,
-    status_update_interval_ms: 1000,
+    status_update_interval_ms: 200,
     rewind_to_start_sec: None,
     reflect_changes_to_playlist: false,
     select_current_song_on_change: true,
@@ -146,7 +146,7 @@
                 direction: Horizontal,
                 panes: [
                     (
-                        size: "40%",
+                        size: "50%",
                         border_type: "Single",
                         pane: Split(
                             direction: Vertical,
@@ -159,7 +159,7 @@
                         ),
                     ),
                     (
-                        size: "60%",
+                        size: "50%",
                         border_type: "Single",
                         pane: Split(
                             direction: Vertical,

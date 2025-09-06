@@ -85,7 +85,7 @@
         direction: Vertical,
         panes: [
             (
-                size: "11",
+                size: "12",
                 pane: Split(
                     direction: Horizontal,
                     panes: [
@@ -95,21 +95,21 @@
                         ),
                         (
                             size: "100%",
+                            borders: "LEFT",
                             pane: Split(
                                 direction: Vertical,
                                 panes: [
                                     (
-                                        size: "9",
-                                        pane: Pane(Cava),
-                                        borders: "BOTTOM",
+                                        size: "1",
+                                        pane: Pane(ProgressBar),
                                     ),
                                     (
-                                        size: "2",
+                                        size: "3",
                                         pane: Pane(Header),
                                     ),
                                     (
-                                        size: "1",
-                                        pane: Pane(ProgressBar),
+                                        size: "8",
+                                        pane: Pane(Cava),
                                     ),
                                 ],
                             ),
@@ -118,12 +118,9 @@
                 ),
             ),
             (
-                size: "3",
-                pane: Pane(Tabs),
-            ),
-            (
                 size: "100%",
                 pane: Pane(TabContent),
+                borders: "TOP",
             ),
         ],
     ),

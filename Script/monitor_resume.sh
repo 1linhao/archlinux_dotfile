@@ -27,7 +27,7 @@ case "$1" in
     case "$(cat "$variable_path")" in
       1)
         bash "$monitor_script_path" mho
-        sleep 1
+        sleep 3
         bash "$monitor_script_path" mec
         ;;
       2)

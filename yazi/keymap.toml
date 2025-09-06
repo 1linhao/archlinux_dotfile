@@ -31,7 +31,7 @@ prepend_keymap = [
   { on = [ "g", "d", "g", "g" ], run = "cd /home/lh/git" },
   { on = [ "g", "d", "g", "d" ], run = "cd /home/lh/git/dotfile" },
   { on = [ "g", "d", "g", "c" ], run = "cd /home/lh/git/caelestia" },
-  { on = [ "g", "d", "p" ], run = "cd /home/lh/Program" },
+  { on = [ "g", "d", "P" ], run = "cd /home/lh/Program" },
   { on = [ "g", "d", "s" ], run = "cd /home/lh/Script" },
   ## config目录
   { on = [ "g", "c", "c" ], run = "cd /home/lh/.config" },
@@ -53,8 +53,8 @@ prepend_keymap = [
   { on = [ "g", "s", "s" ], run = "cd /usr/share" },
   ## 程序目录
   { on = [ "g", "a", "s", "w" ], run = "cd /home/lh/.steam/steam/steamapps/workshop/content/431960", desc = "WallpaperEngineData for steam" },
-  { on = [ "g", "a", "w", "d" ], run = "cd /home/lh/.local/share/WeChat_Data", desc = "微信数据目录" },
-  { on = [ "g", "d", "w" ], run = "cd /home/lh/.wine/drive_c/users", desc = "wine用户目录" },
+  { on = [ "g", "a", "w", "d" ], run = "cd /home/lh/Documents/xwechat_files/wxid_wq6oqrz4aywl22_7cad/msg/file", desc = "微信下载文件目录" },
+  { on = [ "g", "a", "w", "w" ], run = "cd /home/lh/.wine/drive_c/users", desc = "wine用户目录" },
 
 ]
 
