@@ -3,7 +3,7 @@
 # ==== 配置区 ====
 DISK_UUID="d2efc181-3137-4404-a70a-8b4f6da2b40b" # 使用lsblk -f 找到目标分区的uuid
 MOUNT_POINT="/mnt/script" # 设置挂载点
-SUBVOL_SNAPSHOT=("@") # 需要管理快照的子卷
+SUBVOL_SNAPSHOT=("@" "@boot") # 需要管理快照的子卷
 SNAPSHOT_DIR="$MOUNT_POINT/snapshots" # 快照子卷的路径
 SNAPSHOT_JSON="$SNAPSHOT_DIR/snapshot.json" # 脚本数据文件路径
 MOUNTED=0 # 0: 目标卷未挂载，1: 目标卷已挂载
