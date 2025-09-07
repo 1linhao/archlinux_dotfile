@@ -66,6 +66,12 @@ function y
     rm -f -- "$tmp"
 end
 
+# btrfs_snapshot.sh
+abbr bslist sudo bash ~/Script/btrfs_snapshot.sh list
+abbr bscreate sudo bash ~/Script/btrfs_snapshot.sh create
+abbr bsdelete sudo bash ~/Script/btrfs_snapshot.sh delete
+
+
 # neovim
 abbr snvim sudo -E nvim
 
